@@ -1,0 +1,98 @@
+/* static/styles.css */
+
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f4;
+    margin: 0;
+    padding: 0;
+}
+
+.container {
+    max-width: 800px;
+    margin: 20px auto;
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+form {
+    margin-bottom: 20px;
+}
+
+nav {
+    background-color: #333;
+    padding: 10px;
+}
+
+nav a {
+    color: #fff;
+    text-decoration: none;
+    margin-right: 10px;
+}
+
+nav a:hover {
+    text-decoration: underline;
+}
+
+.chart-container {
+    text-align: center;
+}
+
+/* Style for the pie chart */
+.chart-img {
+    max-width: 100%;
+    border-radius: 7px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    
+}
+
+ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+  }
+  
+  li {
+    float: left;
+  }
+  
+  li a {
+    display: block;
+    padding: 8px;
+    background-color: #dddddd;
+  }
+  .top {
+    text-align: right;
+    margin-right: 20px; /* Adjust the margin as needed */
+}
+
+.top a {
+    margin-left: 10px; /* Adjust the spacing between links */
+    text-decoration: none;
+    color: #000; /* Set the color for the links */
+    font-weight: bold; /* Make the links bold */
+}
+
+.top a:hover {
+    color: #007bff; /* Change color on hover */
+}
+
+.header-container {
+    margin-top: 10px; /* Adjust as needed */
+}
+
+.header-title {
+    font-size: 2em;
+    color: #ffffff; /* Change the color as desired */
+    font-family: 'Arial', sans-serif; /* Change the font family as desired */
+    background-color: #34b4db;
+}
+.header {
+    font-size: 2em;
+    color: #0a96b6; /* Change the color as desired */
+    font-family: 'Arial', sans-serif; /* Change the font family as desired */
+    margin-left: 500px;
+    
+}

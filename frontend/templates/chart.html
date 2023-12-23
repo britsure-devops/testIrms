@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Azure SQL Pie Chart</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+    <!-- Add Bootstrap CSS link here if not already included -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
+</head>
+<body>
+
+    <div class="header-container text-center">
+        <h1 class="header-title">Britsure</h1>
+    </div>
+    <div class="header-container1 ">
+        <h1 class="header">IRMS DASHBOARD</h1>
+    </div>
+<p class="top">  <a class="top" href="{{url_for('home')}}"> Home</a> <a class="top" href="{{url_for('login')}}"> Login</a>   <a class="top" href="{{url_for('register')}}"> Register</a></p>
+  
+    <div class="container">
+        <form action="/generate_chart" method="post">
+            <label for="selected_date">Select Date:</label>
+            <input type="date" id="selected_date" name="selected_date" required>
+            <input type="submit" value="Generate Chart">
+        </form>
+
+        <!-- Display the generated pie chart -->
+        {% if chart_base64 %}
+            <div class="chart-container">
+                <img src="data:image/png;base64,{{ chart_base64 }}" alt="Pie Chart" class="chart-img">
+            </div>
+        {% endif %}
+    </div>
+
+    <!-- Add Bootstrap JS and jQuery links here if not already included -->
+    <script src="https://code.jquery.com/jquery-3.6.4.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+
+    <!-- Modal for displaying error message -->
+    <div class="modal" tabindex="-1" role="dialog" id="errorModal">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Error</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    {{ error_message }}
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- JavaScript to trigger the error modal -->
+    <script>
+        // Show the error modal if the error message is present
+        {% if error_message %}
+            $(document).ready(function(){
+                $('#errorModal').modal('show');
+            });
+        {% endif %}
+    </script>
+</body>
+</html>

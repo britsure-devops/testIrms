@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>BRITSURE</title>
+  <style>
+    body {
+      background-image: url('static/images/1119917.jpg');
+      background-size: cover;
+      background-position: center;
+      background-repeat: no-repeat;
+      height: 100vh;
+      margin: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background-color: rgba(255, 255, 255, 0.20);
+      /* Apply a blur effect to the background */
+      backdrop-filter: blur(5px);
+  }
+  
+  .container {
+      width: 470px;
+      height: 420px;
+      padding: 20px;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+      background-color: #ccdcdc;
+      /* Apply a semi-transparent background to the container */
+      background-color: rgba(204, 220, 220, 0.8);
+  }
+
+    .header {
+      text-align: center;
+      margin-bottom: 20px;
+    }
+
+    .header img {
+      max-width: 100px;
+      display: block;
+      margin: 0 auto;
+    }
+
+    .header h4 {
+      font-size: 24px;
+      margin-top: 10px;
+    }
+
+    button {
+      display: block;
+      width: 50%;
+      padding: 12px;
+      background-color: #4285f4; /* Google blue */
+      color: rgb(249, 243, 243);
+      border: none;
+      border-radius: 10px;
+      cursor: pointer;
+      font-size: 16px;
+      margin-bottom: 10px;
+      margin-left: 120px;
+      transition: background-color 0.3s ease-in-out;
+    }
+
+    button:hover {
+      background-color: #357ae8; /* Darker blue on hover */
+    }
+
+    input[type="text"] {
+      width: 50%;
+      padding: 10px;
+      margin-bottom: 10px;
+      margin-left: 110px;
+      margin-right: 70px;
+      border: 1px solid #ccc;
+      border-radius: 10px;
+    
+      
+    }
+
+    input[type="text"]:focus {
+      border-color: #4285f4; /* Highlight border color on focus */
+      size: 500px;
+    }
+
+    #nextLink {
+      display: block; /* Make the link a block element */
+      width: 100px; /* Adjust the width as needed */
+      margin: 0 auto; /* Center the element */
+      padding: 7px 20px; /* Add padding */
+      text-align: center; /* Center the text within the element */
+      background-color: #3498db; /* Set the background color */
+      color: #fff; /* Set the text color */
+      border: 1px solid #3498db; /* Add a border */
+      text-decoration: none; /* Remove underline */
+      transition: background-color 0.3s ease; /* Add a smooth transition for hover effect */
+            }
+        
+    #nextLink:hover {
+      background-color: #035394; /* Change background color on hover */
+            }
+
+    .form-section {
+      display: flex;
+      flex-direction: column;
+      max-width: 500px; /* Adjust the max-width as needed */
+      margin: auto;
+  }
+
+  .form-section label {
+      font-weight: bold;
+      margin-bottom: 5px;
+      margin-left: 195px;
+  }
+
+  .form-section input {
+      padding: 5px;
+      margin-bottom: 10px;
+  }
+
+  .form-section button {
+      padding: 10px;
+      background-color: #3498db;
+      color: #fff;
+      border: none;
+      cursor: pointer;
+  }
+
+  .form-section button:hover {
+      background-color: #2980b9;
+  }
+  </style>
+</head>
+
+<body>
+    <div class="container">
+      <div class="header">
+        <img src="{{ url_for('static', filename='images/mediprobelogo.png') }}" alt="Company Logo">
+        <h4>BRITSURE'S IRMS</h4>
+      </div>
+      <div class="form-section">
+        <form method="POST" action="/predict_fraud2" id="insuranceForm">
+          <label for="claim_number">Claim Number:</label>
+          <input type="text" id="claim_number" name="claim_number" required>
+          <br><br>
+          <button type="submit">Check Risk</button>
+        </form>
+        <div id="report">
+         
+          {% if output %}
+          <p>Investigation Results!</p>
+          <ul>
+            <li>Fraud Percentage: {{ output[0] }}%</li>
+            <li>Category: {{ output[1] }}</li>
+            <li>Reasons: {{ output[2] }}</li>
+            <li>Timestamp: {{ output[3] }}</li>
+          </ul>
+        {% endif %}
+        </div>
+        <!-- <form method="GET" action="/predict_fraud3"> -->
+          <!-- <label> claim_number :</label>
+          <input type="text" id="claim_number" name="claim_number"> -->
+          <br>
+         <button onclick="generateReport()">Generate Risk Report</button>
+        </form>
+        <p id="reportMessage" style="display: none;">Risk Report generated!</p>
+      </div>
+    </div>
+       
+    <script>
+    //  function generateReport() {
+    //   // Add your report generation logic here
+    //   // For now, let's just display a message
+    //   const reportDiv = document.getElementById('report');
+    //   reportDiv.innerHTML = '<p>Report generated!</p>';
+    // }
+    function generateReport() {
+        const reportDiv = document.getElementById('report');
+        const reportMessage = document.getElementById('reportMessage');
+        
+        reportDiv.innerHTML = ''; // Clear any existing content
+        
+        // Add your report generation logic here
+        // For now, let's just display a message
+        reportMessage.style.display = 'block'; // Display the message
+      }
+    </script>
+  </body>
+  </html>

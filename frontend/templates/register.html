@@ -1,0 +1,99 @@
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>User Registeration Form</title>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css">  
+<style>
+  body {
+      background-image: url('static/images/1119917.jpg');
+      background-size: cover;
+      background-position: center;
+      background-repeat: no-repeat;
+      height: 100vh;
+      margin: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background-color: rgba(255, 255, 255, 0.20);
+  }
+
+  .container {
+      background-color: rgba(255, 255, 255, 0.8);
+      padding: 20px;
+      border-radius: 10px;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+      height: 700px;
+      width: 600px;
+      margin-top: 50px; /* Added margin-top for better spacing */
+  }
+
+  h2 {
+      text-align: center;
+  }
+
+  .form-group {
+      margin-bottom: 20px;
+  }
+
+  label {
+      font-weight: bold; /* Make labels bold for better visibility */
+  }
+
+  input.form-control {
+      border-radius: 5px; /* Rounded corners for form fields */
+  }
+
+  button {
+      width: 100%;
+      border-radius: 5px; /* Rounded corners for the button */
+  }
+
+  .bottom {
+      text-align: center;
+      margin-top: 20px;
+  }
+
+  /* Added some spacing for better readability */
+  .alert {
+      margin-bottom: 20px;
+  }
+</style>           
+</head>
+<body>
+<div class="container">
+	<h2>User Registration</h2>
+	<form action="{{ url_for('register') }}" method="post">
+        {% if message is defined and message %}
+			<div class="alert alert-warning">{{ message }}</div>
+		{% endif %}
+
+    <div class="form-group">
+			<label for="employee">Employee ID:</label>
+			<input type="text" class="form-control" id="empid" name="empid" placeholder="Enter ID" >
+		</div>
+
+		<div class="form-group">
+			<label for="name">Fisrt Name:</label>
+			<input type="text" class="form-control" id="name" name="name" placeholder="Enter First Name" >
+		</div>
+
+    <div class="form-group">
+			<label for="name">Last Name:</label>
+			<input type="text" class="form-control" id="name" name="lastname" placeholder="Enter Last Name" >
+		</div>
+
+		<div class="form-group">
+			<label for="email">Email:</label>
+			<input type="email" class="form-control" id="email" name="email" placeholder="Enter email" >
+		</div>
+		<div class="form-group">
+			<label for="pwd">Password:</label>
+			<input type="password" class="form-control" id="password" name="password" placeholder="Enter password" >
+		</div>    
+		<button type="submit" class="btn btn-primary">Register</button>
+		<p class="bottom">Already have an account?  <a class="bottom" href="{{url_for('login')}}"> Login here</a></p>
+	</form>
+</div>        
+</body>
+</html>

@@ -1,0 +1,13 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: irmsdeploymentworkflow
+  namespace: namespace-workflow-1703327767957
+spec:
+  type: LoadBalancer
+  selector:
+    app: irmsdeploymentworkflow
+  ports:
+    - protocol: TCP
+      port: 8000
+      targetPort: 8000

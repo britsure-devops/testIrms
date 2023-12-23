@@ -1,0 +1,22 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: irmsdeploymentworkflow
+  labels:
+    app: irmsdeploymentworkflow
+  namespace: namespace-workflow-1703327767957
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: irmsdeploymentworkflow
+  template:
+    metadata:
+      labels:
+        app: irmsdeploymentworkflow
+    spec:
+      containers:
+        - name: irmsdeploymentworkflow
+          image: acrworkflow1703327767957.azurecr.io/image-workflow-1703327767957:latest
+          ports:
+            - containerPort: 8000
