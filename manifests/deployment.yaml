@@ -1,0 +1,22 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: irms_test_workflowv2
+  labels:
+    app: irms_test_workflowv2
+  namespace: namespace-workflow-1703351066105
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: irms_test_workflowv2
+  template:
+    metadata:
+      labels:
+        app: irms_test_workflowv2
+    spec:
+      containers:
+        - name: irms_test_workflowv2
+          image: acrworkflow1703351066105.azurecr.io/image-workflow-1703351066105:latest
+          ports:
+            - containerPort: 8000
